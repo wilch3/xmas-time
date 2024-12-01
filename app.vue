@@ -1,5 +1,37 @@
 <template>
 	<div class="main">
+		<div class="snowflakes" aria-hidden="true">
+			<div class="snowflake">
+			❅
+			</div>
+			<div class="snowflake">
+			❅
+			</div>
+			<div class="snowflake">
+			❆
+			</div>
+			<div class="snowflake">
+			❄
+			</div>
+			<div class="snowflake">
+			❅
+			</div>
+			<div class="snowflake">
+			❆
+			</div>
+			<div class="snowflake">
+			❄
+			</div>
+			<div class="snowflake">
+			❅
+			</div>
+			<div class="snowflake">
+			❆
+			</div>
+			<div class="snowflake">
+			❄
+			</div>
+		</div>
 		<div class="joululaulu">
 			<div class="song">
 				<audio ref="joululaulu" src="./joululaulu.wav" loop>
@@ -13,9 +45,20 @@
 			<h1>MuTe Student’s Christmas Plugin Calendar</h1>
 			<p style="margin: 40px 0px;">Discover a daily selected (free!) plugin of the MuTe student community to play around with during the holidays!</p>
 			<div class="green-bocks">
-				<p>And today's plugin is... &#129345; &#x1F941; &#x1F941;</p>
-				<h2>{{ pluginOfTheDay["manufacturer"] }}: {{ pluginOfTheDay["plugin_name"] }}</h2>
-				<p> &#9924; Go enjoy it <a :href="pluginOfTheDay['link']" target="_blank">here!!!</a>&#9924;</p>
+				<div v-if="!revealed">
+					<p>Click on the bocks to reveal...</p>
+					<p class="bock" @click="revealBocks()">&#x1f381;</p>
+				</div>
+				<div v-else>
+					<p>And today's plugin is... &#129345; &#x1F941; &#x1F941;</p>
+					<div v-if="fakeLoad">
+						<span class="spinner rotate">&#x1f381;</span>
+					</div>
+					<div v-else>
+						<h2>{{ pluginOfTheDay["manufacturer"] }}: {{ pluginOfTheDay["plugin_name"] }}</h2>
+						<p> &#9924; Go enjoy it <a :href="pluginOfTheDay['link']" target="_blank">here!!!</a>&#9924;</p>
+					</div>
+				</div>
 			</div>
 			<h4 style="margin: 40px 0px;" class="prev-days" @click="showPreviousDays=!showPreviousDays">⇩ Click here to show previous days ⇩</h4>
 			<div v-if="showPreviousDays" class="list-prev-days">
@@ -33,6 +76,8 @@ const mm = String(today.getMonth() + 1).padStart(2, '0')
 const yyyy = today.getFullYear()
 const showPreviousDays = ref(false)
 const audioPlay = ref(false)
+const revealed = ref(false)
+const fakeLoad = ref(true)
 
 useHead({
 	title: 'MuTe Colossal Xmas Calendar',
@@ -53,6 +98,13 @@ const joululaulu = ref(null)
 onMounted(() => {
 	console.log(joululaulu.value)
 })
+
+const revealBocks = () => {
+	revealed.value = true
+	setTimeout(() => {
+		fakeLoad.value = false
+	}, 3000)
+}
 
 const play = () => {
 	audioPlay.value = true
@@ -121,4 +173,36 @@ html {
     bottom: 12px;
     font-size: 10px;
 }
+.bock {
+	size: 30px;
+	padding: 20px;
+	cursor: pointer;
+}
+
+.rotate{
+  animation: spinner 1.5s linear infinite; 
+}
+@keyframes spinner {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* box-shadow: inset -2px 0 0 2px #0bf; */
+}
+
+/* customizable snowflake styling */
+.snowflake {
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial;
+  text-shadow: 0 0 1px #000;
+}
+
+
+@-webkit-keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@-webkit-keyframes snowflakes-shake{0%{-webkit-transform:translateX(0px);transform:translateX(0px)}50%{-webkit-transform:translateX(80px);transform:translateX(80px)}100%{-webkit-transform:translateX(0px);transform:translateX(0px)}}@keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@keyframes snowflakes-shake{0%{transform:translateX(0px)}50%{transform:translateX(80px)}100%{transform:translateX(0px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default;-webkit-animation-name:snowflakes-fall,snowflakes-shake;-webkit-animation-duration:10s,3s;-webkit-animation-timing-function:linear,ease-in-out;-webkit-animation-iteration-count:infinite,infinite;-webkit-animation-play-state:running,running;animation-name:snowflakes-fall,snowflakes-shake;animation-duration:10s,3s;animation-timing-function:linear,ease-in-out;animation-iteration-count:infinite,infinite;animation-play-state:running,running}.snowflake:nth-of-type(0){left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s}.snowflake:nth-of-type(1){left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s}.snowflake:nth-of-type(2){left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s}.snowflake:nth-of-type(3){left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s}.snowflake:nth-of-type(4){left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s}.snowflake:nth-of-type(5){left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s}.snowflake:nth-of-type(6){left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s}.snowflake:nth-of-type(7){left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s}.snowflake:nth-of-type(8){left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s}.snowflake:nth-of-type(9){left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s}
+
 </style>
