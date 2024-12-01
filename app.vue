@@ -2,7 +2,7 @@
 	<div class="main">
 		<div class="joululaulu">
 			<div class="song">
-				<audio ref="joululaulu" src="/joululaulu.wav" loop>
+				<audio ref="joululaulu" src="./joululaulu.wav" loop>
 				</audio>
 				<button class="controls" v-if="!audioPlay" @click="play()">&#9654;</button>
 				<button class="controls" v-else @click="pause()">&#9208;</button>
@@ -22,6 +22,7 @@
 				Nothing to see here.. yet!
 			</div>
 		</div>
+		<footer class="credits"> Idea: MuTe 2nd year bachelors <br/> Code: Jekaterina <br/> Design: Elias N.<br/></footer>
 	</div>
 </template>
 
@@ -114,5 +115,10 @@ html {
 	display: flex;
     flex-direction: column;
     align-items: end;
+}
+.credits {
+	position: absolute;
+    bottom: 12px;
+    font-size: 10px;
 }
 </style>
