@@ -125,7 +125,6 @@ for (const [k, v] of Object.entries(plugins)) {
 		previousDays.value[k] = v[0]
 	}
 }
-console.log(previousDays.value)
 
 </script>
 
@@ -149,6 +148,12 @@ html {
 	max-width: 500px;
 	padding: 10px;
 	text-align: center;
+	margin-bottom: 70px;
+}
+@media (max-width: 500px) {
+	.center {
+		width: 100%;
+	}
 }
 .green-bocks {
 	padding: 20px;
@@ -181,7 +186,7 @@ html {
     align-items: end;
 }
 .credits {
-	position: absolute;
+	position: fixed;
     bottom: 12px;
     font-size: 10px;
 }
