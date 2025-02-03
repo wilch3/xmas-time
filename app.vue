@@ -44,26 +44,41 @@
 		<div class="center">
 			<h1>MuTe Student’s Christmas Plugin Calendar</h1>
 			<p style="margin: 40px 0px;">Discover a daily selected (free!) plugin of the MuTe student community to play around with during the holidays!</p>
-			<div class="green-bocks">
-				<div v-if="!revealed">
-					<p>Click on the bocks to reveal...</p>
-					<p class="bock" @click="revealBocks()">&#x1f381;</p>
+			<div v-if="noChristmas">
+				<div class="green-bocks">
+					<h2>New plugins next year!</h2>
 				</div>
-				<div v-else>
-					<p>And today's plugin is... &#129345; &#x1F941; &#x1F941;</p>
-					<div v-if="fakeLoad">
-						<span class="spinner rotate">&#x1f381;</span>
-					</div>
-					<div v-else>
-						<h2>{{ pluginOfTheDay["manufacturer"] }}: {{ pluginOfTheDay["plugin_name"] }}</h2>
-						<p> &#9924; Go enjoy it <a :href="pluginOfTheDay['link']" target="_blank">here!!!</a>&#9924;</p>
+				<div class="list-prev-days">
+					<div class="prev" v-for="[k, v] of Object.entries(plugins)">
+						<p>{{ k }}: <a :href="plugins[k][0]['link']" style="color: white;" target="_blank"> {{ plugins[k][0]['plugin_name'] }} </a> by {{ plugins[k][0]['manufacturer'] }}</p>
+
+					<!-- <div class="prev" v-for="[k, v] of Object.entries(plugins)"> -->
+						<!-- <p>{{ k }}: <a :href="plugins[k]['link']" style="color: white;" target="_blank"> {{ plugins[k]['plugin_name'] }} </a> by {{ plugins[k]['manufacturer'] }}</p> -->
 					</div>
 				</div>
 			</div>
-			<h4 style="margin: 40px 0px;" class="prev-days" @click="showPreviousDays=!showPreviousDays">⇩ Click here to show previous days ⇩</h4>
-			<div v-if="showPreviousDays" class="list-prev-days">
-				<div class="prev" v-for="[k, v] of Object.entries(previousDays)">
-					<p>{{ k }}: <a :href="previousDays[k]['link']" style="color: white;" target="_blank"> {{ previousDays[k]['plugin_name'] }} </a> by {{ previousDays[k]['manufacturer'] }}</p>
+			<div v-else>
+				<div class="green-bocks">
+					<div v-if="!revealed">
+						<p>Click on the bocks to reveal...</p>
+						<p class="bock" @click="revealBocks()">&#x1f381;</p>
+					</div>
+					<div v-else>
+						<p>And today's plugin is... &#129345; &#x1F941; &#x1F941;</p>
+						<div v-if="fakeLoad">
+							<span class="spinner rotate">&#x1f381;</span>
+						</div>
+						<div v-else>
+							<h2>{{ pluginOfTheDay["manufacturer"] }}: {{ pluginOfTheDay["plugin_name"] }}</h2>
+							<p> &#9924; Go enjoy it <a :href="pluginOfTheDay['link']" target="_blank">here!!!</a>&#9924;</p>
+						</div>
+					</div>
+				</div>
+				<h4 style="margin: 40px 0px;" class="prev-days" @click="showPreviousDays=!showPreviousDays">⇩ Click here to show previous days ⇩</h4>
+				<div v-if="showPreviousDays" class="list-prev-days">
+					<div class="prev" v-for="[k, v] of Object.entries(previousDays)">
+						<p>{{ k }}: <a :href="previousDays[k]['link']" style="color: white;" target="_blank"> {{ previousDays[k]['plugin_name'] }} </a> by {{ previousDays[k]['manufacturer'] }}</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -81,6 +96,8 @@ const audioPlay = ref(false)
 const revealed = ref(false)
 const fakeLoad = ref(true)
 
+const noChristmas = ref(true)
+
 useHead({
 	title: 'MuTe Colossal Xmas Calendar',
 })
@@ -89,12 +106,15 @@ const formatted = yyyy + '-' + mm + '-' + dd
 
 const getPlugins = () => import('~/public/plugins.json').then(m => m.default || m)
 const getPluginOfToday = (data: any) => {
-	return data[formatted]
+	if (!data[formatted]) {
+		return null
+	}
+	return data[formatted][0]
 }
 
 const plugins = await getPlugins()
 const pluginOfTheDay = ref()
-pluginOfTheDay.value = getPluginOfToday(plugins)[0]
+pluginOfTheDay.value = getPluginOfToday(plugins)
 
 const joululaulu = ref(null)
 onMounted(() => {
