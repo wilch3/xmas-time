@@ -341,7 +341,7 @@ h2 {
 
 .day {
 	/* position: absolute; */
-	font-size: 32px;
+	font-size: 40px;
 	display: flex;
 	justify-content: center;
 }
