@@ -43,7 +43,7 @@
 		</div>
 		<div class="center">
 			<h1 class="funky title">Christmas Plugin Calendar</h1>
-			<p style="margin: 40px 0px;">Discover a daily selected (free!) plugin of the MuTe student community to play around with during the holidays!</p>
+			<p style="margin: 40px 0px;">Discover daily (free) plugins selected by the MuTe student community to play around with during the holidays!</p>
 		</div>
 		<div class="calendar">
 			<div v-for="[k, v] of Object.entries(plugins)" class="calendar-item" :class="{ 'today': getDay(k) === Number(dd), 'past': getDay(k) <= Number(dd) }" @click="showPluginOrNot(getDay(k), v)">
@@ -80,7 +80,7 @@
 			</div>
 
 		</div>
-		<footer class="credits"> With love, <br/> MuTe 3rd year bachelors; Christmas calendar team <br/> (Armi, Elias N., Jekaterina, Niko, Roosa)<br/> <br/> Implementation: Jekaterina</footer>
+		<footer class="credits"> With love, <br/> MuTe 3rd year bachelors; Christmas calendar team <br/> (Armi, Elias N., Jekaterina, Niko, Roosa)<br/> <br/> Implementation: Jekaterina <br/> Music Technology @ Sibelius Academy</footer>
 	</div>
 </template>
 
