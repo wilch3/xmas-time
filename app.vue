@@ -47,7 +47,7 @@
 		</div>
 		<div class="calendar">
 			<div v-for="[k, v] of Object.entries(plugins)" class="calendar-item" :class="{ 'today': getDay(k) === Number(dd), 'past': getDay(k) <= Number(dd) }" @click="showPluginOrNot(getDay(k), v)">
-				<div class="day-wrap" :class="{ 'today-circle': getDay(k) === Number(dd) }" :style="generateRandom()">
+				<div class="day-wrap" :class="{ 'today-circle': getDay(k) === Number(dd) }" :style="generateRandom(k)">
 					<span class="day funky">{{ getDay(k) }}</span>
 				</div>
 			</div>
@@ -73,8 +73,8 @@
 				<div>
 					<p>&#129345; &#x1F941; &#x1F941;</p>
 					<div>
-						<h2 class="funky">{{ pluginOfTheDay["manufacturer"] }}: {{ pluginOfTheDay["plugin_name"] }}</h2>
-						<p> &#9924; Go enjoy it <a :href="pluginOfTheDay['link']" target="_blank">here!!!</a>&#9924;</p>
+						<h2 class="funky">{{ pluginData["manufacturer"] }}: {{ pluginData["plugin_name"] }}</h2>
+						<p> &#9924; Go enjoy it <a :href="pluginData['link']" target="_blank">here!!!</a>&#9924;</p>
 					</div>
 				</div>
 			</div>
@@ -106,9 +106,9 @@ const getDay = (date: String) => {
 	return Number(date.split('-')[2])
 }
 
-const generateRandom = () => {
-	return { top: Math.random() * 40 + 'px', left: Math.random() * 40 + 'px' }
-}
+// const generateRandom = () => {
+// 	return { top: Math.random() * 40 + 'px', left: Math.random() * 40 + 'px' }
+// }
 
 const noChristmas = ref(false)
 
@@ -130,12 +130,26 @@ const plugins = await getPlugins()
 const pluginOfTheDay = ref()
 pluginOfTheDay.value = getPluginOfToday(plugins)
 
+const randomCache: any = {}
+
+const generateRandom = (key: string) => {
+	if (!randomCache[key]) {
+		randomCache[key] = {
+		top: Math.random() * 40 + 'px',
+		left: Math.random() * 40 + 'px'
+		}
+	}
+	return randomCache[key]
+}
+
 const joululaulu = ref(null)
 onMounted(() => {
 	console.log(joululaulu.value)
 })
 
 const showPluginOrNot = (day: number, data: any) => {
+	console.log('hello', day, Number(dd), data[0])
+	console.log(today)
 	if (day <= Number(dd)) {
 		pluginOpen.value = !pluginOpen.value
 		pluginData.value = data[0]
