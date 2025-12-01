@@ -42,51 +42,49 @@
 			</div>
 		</div>
 		<div class="center">
-			<h1>MuTe Student’s Christmas Plugin Calendar</h1>
+			<h1 class="funky">MuTe Students' Christmas Plugin Calendar</h1>
 			<p style="margin: 40px 0px;">Discover a daily selected (free!) plugin of the MuTe student community to play around with during the holidays!</p>
-			<div v-if="noChristmas">
-				<div class="green-bocks">
-					<h2>New plugins next year!</h2>
-				</div>
-				<div class="list-prev-days">
-					<div class="prev" v-for="[k, v] of Object.entries(plugins)">
-						<p>{{ k }}: <a :href="plugins[k][0]['link']" style="color: white;" target="_blank"> {{ plugins[k][0]['plugin_name'] }} </a> by {{ plugins[k][0]['manufacturer'] }}</p>
-
-					<!-- <div class="prev" v-for="[k, v] of Object.entries(plugins)"> -->
-						<!-- <p>{{ k }}: <a :href="plugins[k]['link']" style="color: white;" target="_blank"> {{ plugins[k]['plugin_name'] }} </a> by {{ plugins[k]['manufacturer'] }}</p> -->
-					</div>
-				</div>
-			</div>
-			<div v-else>
-				<div class="green-bocks">
-					<div v-if="!revealed">
-						<p>Click on the bocks to reveal...</p>
-						<p class="bock" @click="revealBocks()">&#x1f381;</p>
-					</div>
-					<div v-else>
-						<p>And today's plugin is... &#129345; &#x1F941; &#x1F941;</p>
-						<div v-if="fakeLoad">
-							<span class="spinner rotate">&#x1f381;</span>
-						</div>
-						<div v-else>
-							<h2>{{ pluginOfTheDay["manufacturer"] }}: {{ pluginOfTheDay["plugin_name"] }}</h2>
-							<p> &#9924; Go enjoy it <a :href="pluginOfTheDay['link']" target="_blank">here!!!</a>&#9924;</p>
-						</div>
-					</div>
-				</div>
-				<h4 style="margin: 40px 0px;" class="prev-days" @click="showPreviousDays=!showPreviousDays">⇩ Click here to show previous days ⇩</h4>
-				<div v-if="showPreviousDays" class="list-prev-days">
-					<div class="prev" v-for="[k, v] of Object.entries(previousDays)">
-						<p>{{ k }}: <a :href="previousDays[k]['link']" style="color: white;" target="_blank"> {{ previousDays[k]['plugin_name'] }} </a> by {{ previousDays[k]['manufacturer'] }}</p>
-					</div>
-				</div>
+		</div>
+		<div class="calendar">
+			<div v-for="[k, v] of Object.entries(plugins)" class="calendar-item" :class="{ 'today': getDay(k) === Number(dd), 'past': getDay(k) <= Number(dd) }" @click="showPluginOrNot(getDay(k), v)">
+				<span class="day funky" :style="generateRandom()">{{ getDay(k) }}</span>
 			</div>
 		</div>
-		<footer class="credits"> Idea: MuTe 2nd year bachelors <br/> Code: Jekaterina <br/> Design: Elias N.<br/></footer>
+		<div class="plugin" ref="plugin" v-if="pluginOpen">
+			<div v-if="pluginData && pluginData.id === pluginOfTheDay.id">
+				<div v-if="!revealed">
+					<p>Click on the box for the grand reveal...</p>
+					<p class="bock" @click="revealBocks()">&#x1f381;</p>
+				</div>
+				<div v-else>
+					<p>And today's plugin is... &#129345; &#x1F941; &#x1F941;</p>
+					<div v-if="fakeLoad">
+						<span class="spinner rotate">&#x1f381;</span>
+					</div>
+					<div v-else>
+						<h2 class="funky">{{ pluginOfTheDay["manufacturer"] }}: {{ pluginOfTheDay["plugin_name"] }}</h2>
+						<p> &#9924; Go enjoy it <a :href="pluginOfTheDay['link']" target="_blank">here!!!</a>&#9924;</p>
+					</div>
+				</div>
+			</div>
+			<div v-else-if="pluginData">
+				<div>
+					<p>&#129345; &#x1F941; &#x1F941;</p>
+					<div>
+						<h2 class="funky">{{ pluginOfTheDay["manufacturer"] }}: {{ pluginOfTheDay["plugin_name"] }}</h2>
+						<p> &#9924; Go enjoy it <a :href="pluginOfTheDay['link']" target="_blank">here!!!</a>&#9924;</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<footer class="credits"> With love, <br/> MuTe 3rd year bachelors; Christmas calendar team <br/> (Armi, Elias N., Jekaterina, Niko, Roosa)<br/> <br/> Code: Jekaterina <br/> Design: Elias & Jekaterina<br/></footer>
 	</div>
 </template>
 
 <script setup lang="ts">
+import { onClickOutside } from '@vueuse/core'
+
 const today = new Date()
 const dd = String(today.getDate()).padStart(2, '0')
 const mm = String(today.getMonth() + 1).padStart(2, '0')
@@ -96,10 +94,24 @@ const audioPlay = ref(false)
 const revealed = ref(false)
 const fakeLoad = ref(true)
 
-const noChristmas = ref(true)
+const target = useTemplateRef('plugin')
+onClickOutside(target, event => { if (pluginOpen.value) {pluginOpen.value = false} })
+
+const pluginOpen = ref(false)
+const pluginData = ref(null)
+
+const getDay = (date: String) => {
+	return Number(date.split('-')[2])
+}
+
+const generateRandom = () => {
+	return { top: Math.random() * 40 + 'px', left: Math.random() * 40 + 'px' }
+}
+
+const noChristmas = ref(false)
 
 useHead({
-	title: 'MuTe Colossal Xmas Calendar',
+	title: 'MuTe Xmas Daily Plugins :)',
 })
 
 const formatted = yyyy + '-' + mm + '-' + dd
@@ -120,6 +132,14 @@ const joululaulu = ref(null)
 onMounted(() => {
 	console.log(joululaulu.value)
 })
+
+const showPluginOrNot = (day: number, data: any) => {
+	if (day <= Number(dd)) {
+		pluginOpen.value = !pluginOpen.value
+		pluginData.value = data[0]
+		console.log(pluginData)
+	}
+}
 
 const revealBocks = () => {
 	revealed.value = true
@@ -150,15 +170,17 @@ for (const [k, v] of Object.entries(plugins)) {
 
 <style lang="css">
 @import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap');
-.parkinsans-300 {
-  font-family: "Parkinsans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Shizuru&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.funky {
+	font-family: "Shizuru", system-ui;
 }
+
 html {
-	font-family: "Parkinsans", sans-serif;
-	background-color: #CC0000;
+	/* font-family: Arial, Helvetica, sans-serif; */
+	font-family: "VT323", monospace;
+	background-color: #1f2766;
 	color: white;
 
 }
@@ -168,7 +190,7 @@ html {
 	max-width: 500px;
 	padding: 10px;
 	text-align: center;
-	margin-bottom: 70px;
+	/* margin-bottom: 70px; */
 }
 @media (max-width: 500px) {
 	.center {
@@ -187,9 +209,11 @@ html {
 .prev-days {
 	cursor: pointer;
 }
+
 .prev-days:hover {
 	color: green;
 }
+
 .controls {
     border: none;
     color: white;
@@ -197,7 +221,8 @@ html {
     font-size: 30px;
 }
 .joululaulu {
-	display: flex;
+	display: none;
+	/* display: flex; */
     justify-content: end;
 }
 .song {
@@ -240,6 +265,80 @@ html {
 }
 .prev {
 	font-size: 12px;
+}
+
+h2 {
+	font-size: 48px;
+}
+.calendar {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	column-gap: 20px;
+	row-gap: 20px;
+	width: 100%;
+	max-width: 750px;
+    margin: auto;
+	/* padding-top: 50px; */
+    /* grid-template-rows: minmax(10px, 1fr) 3fr; */
+}
+
+.calendar-item {
+	height: 45px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 0.5px dashed grey;
+	padding: 24px 16px;
+	position: relative;
+}
+
+.day {
+	position: absolute;
+	font-size: 32px;
+}
+
+.today {
+	background-image: url(today.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.today:hover {
+	transform: scale(1.2);
+}
+
+.calendar-item:not(.past):not(.today) {
+	color: grey;
+}
+
+.past {
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.past:hover {
+	transform: scale(1.1);
+}
+
+.plugin {
+	padding: 24px 38px;
+    position: absolute;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(40px);
+	border: 6px solid;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+	min-width: 400px;
+    min-height: 200px;
+}
+
+a {
+	color: red;
 }
 
 @-webkit-keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@-webkit-keyframes snowflakes-shake{0%{-webkit-transform:translateX(0px);transform:translateX(0px)}50%{-webkit-transform:translateX(80px);transform:translateX(80px)}100%{-webkit-transform:translateX(0px);transform:translateX(0px)}}@keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@keyframes snowflakes-shake{0%{transform:translateX(0px)}50%{transform:translateX(80px)}100%{transform:translateX(0px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default;-webkit-animation-name:snowflakes-fall,snowflakes-shake;-webkit-animation-duration:10s,3s;-webkit-animation-timing-function:linear,ease-in-out;-webkit-animation-iteration-count:infinite,infinite;-webkit-animation-play-state:running,running;animation-name:snowflakes-fall,snowflakes-shake;animation-duration:10s,3s;animation-timing-function:linear,ease-in-out;animation-iteration-count:infinite,infinite;animation-play-state:running,running}.snowflake:nth-of-type(0){left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s}.snowflake:nth-of-type(1){left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s}.snowflake:nth-of-type(2){left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s}.snowflake:nth-of-type(3){left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s}.snowflake:nth-of-type(4){left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s}.snowflake:nth-of-type(5){left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s}.snowflake:nth-of-type(6){left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s}.snowflake:nth-of-type(7){left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s}.snowflake:nth-of-type(8){left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s}.snowflake:nth-of-type(9){left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s}

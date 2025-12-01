@@ -1,185 +1,194 @@
 {
-	"2024-12-01": [
-		{
-			"manufacturer": "Sonosaurus",
-			"plugin_name": "PaulXstretch",
-			"link": "https://sonosaurus.com/paulxstretch/"
-		}
-	],
-	"2024-12-02": [
-		{
-			"manufacturer": "Kilohearts",
-			"plugin_name": "Essentials",
-			"link": "https://kilohearts.com/products/kilohearts_essentials"
-		}
-	],
-	"2024-12-03": [
-		{
-			"manufacturer": "Hvoya Audio",
-			"plugin_name": "Ribs",
-			"link": "https://hvoyaaudio.itch.io/ribs"
-		}
-	],
-	"2024-12-04": [
-		{
-			"manufacturer": "GMH Audio",
-			"plugin_name": "Buzz Cut",
-			"link": "https://plugins4free.com/plugin/2896/"
-		}
-	],
-	"2024-12-05": [
-		{
-			"manufacturer": "Valhalla DSP",
-			"plugin_name": "Supermassive",
-			"link": "https://valhalladsp.com/shop/reverb/valhalla-supermassive"
-		}
-	],
-	"2024-12-06": [
-		{
-			"manufacturer": "Martinic",
-			"plugin_name": "Kee Bass",
-			"link": "https://www.martinic.com/en/products/kee-bass"
-		}
-	],
-	"2024-12-07": [
-		{
-			"manufacturer": "TAL",
-			"plugin_name": "TAL-Chorus-LX",
-			"link": "https://tal-software.com/products/tal-chorus-lx"
-		}
-	],
-	"2024-12-08": [
-		{
-			"manufacturer": "Soundly",
-			"plugin_name": "Soundly Tools",
-			"link": "https://getsoundly.com/tools/"
-		}
-	],
-	"2024-12-09": [
-		{
-			"manufacturer": "Michael Norris",
-			"plugin_name": "SoundMagic Spectral",
-			"link": "https://michaelnorris.info/software/soundmagic-spectral"
-		}
-	],
-	"2024-12-10": [
-		{
-			"manufacturer": "Tokyo Dawn Labs",
-			"plugin_name": "Freebies",
-			"link": "https://www.tokyodawn.net/tokyo-dawn-labs/#:~:text=TOKYO%20DAWN%20LABS%20FREEWARE"
-		}
-	],
-	"2024-12-11": [
-		{
-			"manufacturer": "GlitchMachines",
-			"plugin_name": "Fracture",
-			"link": "https://glitchmachines.com/products/fracture/"
-		}
-	],
-	"2024-12-12": [
-		{
-			"manufacturer": "Analog Obsession",
-			"plugin_name": "Predd",
-			"link": "https://www.patreon.com/posts/predd-57672680"
-		}
-	],
-	"2024-12-13": [
-		{
-			"manufacturer": "Softube",
-			"plugin_name": "Saturation Knob",
-			"link": "https://www.softube.com/saturationknob?gad_source=1&gclid=CjwKCAiAxqC6BhBcEiwAlXp455bVlEPtXlhWUkTykgpIoiH6mswC9h7pR3zS3c84dveYDt5kcgTXvRoCpugQAvD_BwE"
-		}
-	],
-	"2024-12-14": [
-		{
-			"manufacturer": "Vital Audio",
-			"plugin_name": "Vital",
-			"link": "https://vital.audio/"
-		}
-	],
-	"2024-12-15": [
-		{
-			"manufacturer": "Recluse Audio",
-			"plugin_name": "Pulsar 2.0",
-			"link": "https://recluse-audio.com/ols/products/pulsar-20"
-		}
-	],
-	"2024-12-16": [
-		{
-			"manufacturer": "Xfer Records",
-			"plugin_name": "OTT and other Xfer freeware",
-			"link": "https://xferrecords.com/freeware"
-		}
-	],
-	"2024-12-17": [
-		{
-			"manufacturer": "Lese Audio Technologies",
-			"plugin_name": "Codec",
-			"link": "https://lese.io/plugin/codec/?srsltid=AfmBOopH546JS4GWT0BjMJxz9cqdZKGQ555o-JLFhV2O1Co3DQOdLwUh"
-		}
-	],
-	"2024-12-18": [
-		{
-			"manufacturer": "Plogue",
-			"plugin_name": "Alter/ Ego",
-			"link": "https://www.plogue.com/products/alter-ego.html"
-		}
-	],
-	"2024-12-19": [
-		{
-			"manufacturer": "BPB",
-			"plugin_name": "Cassette Drums",
-			"link": "https://bedroomproducersblog.com/2016/11/23/drum-machine-vst/"
-		}
-	],
-	"2024-12-20": [
-		{
-			"manufacturer": "MeldaProduction",
-			"plugin_name": "MFreeFXBundle",
-			"link": "https://www.meldaproduction.com/MFreeFXBundle"
-		}
-	],
-	"2024-12-21": [
-		{
-			"manufacturer": "Robbert-VDH",
-			"plugin_name": "Spectral Compressor",
-			"link": "https://github.com/robbert-vdh/nih-plug/tree/master/plugins/spectral_compressor"
-		}
-	],
-	"2024-12-22": [
-		{
-			"manufacturer": "Matt Tytel",
-			"plugin_name": "Helm",
-			"link": "https://tytel.org/helm/"
-		}
-	],
-	"2024-12-23": [
-		{
-			"manufacturer": "Chowdhury DSP",
-			"plugin_name": "Chow Tape Model",
-			"link": "https://chowdsp.com/products.html"
-		}
-	],
-	"2024-12-24": [
-		{
-			"manufacturer": "Noise Engineering",
-			"plugin_name": "Freequel Bundle",
-			"link": "https://noiseengineering.us/products/the-freequel-bundle-sinc-vereor-virt-vereor-ruina/"
-		},
-		{
-			"manufacturer": "Unknown",
-			"plugin_name": "Pan-O-War",
-			"link": "https://drive.google.com/drive/u/0/folders/152esp4iymBgWfGhu6MmrEgpR_wH4uFhT"
-		},
-		{
-			"manufacturer": "AudioThing",
-			"plugin_name": "Moon Echo",
-			"link": "https://www.audiothing.net/effects/moon-echo/"
-		},
-		{
-			"manufacturer": "Sonokinetic",
-			"plugin_name": "Sleigh Bells",
-			"link": "https://www.sonokinetic.net/sleighbells/?srsltid=AfmBOop5ZTSheTEUgRWVGvJ9QsbOGSQe7haWUCJTnl0jyx4wQgV5Aw8G"
-		}
-	]
+  "2025-12-14": [
+    {
+      "id": 2,
+      "manufacturer": "Plogue",
+      "plugin_name": "Alter/ Ego",
+      "link": "https://www.plogue.com/products/alter-ego.html"
+    }
+  ],
+  "2025-12-20": [
+    {
+      "id": 13,
+      "manufacturer": "Sonokinetic",
+      "plugin_name": "Sleigh Bells",
+      "link": "https://www.sonokinetic.net/sleighbells/"
+    }
+  ],
+  "2025-12-11": [
+    {
+      "id": 8,
+      "manufacturer": "TAL",
+      "plugin_name": "TAL-Chorus-LX",
+      "link": "https://tal-software.com/products/tal-chorus-lx"
+    }
+  ],
+  "2025-12-08": [
+    {
+      "id": 23,
+      "manufacturer": "Valhalla DSP",
+      "plugin_name": "Supermassive",
+      "link": "https://valhalladsp.com/shop/reverb/valhalla-supermassive"
+    }
+  ],
+  "2025-12-22": [
+    {
+      "id": 15,
+      "manufacturer": "Pure Data",
+      "plugin_name": "Pure Data (Pd)",
+      "link": "http://puredata.info"
+    }
+  ],
+  "2025-12-09": [
+    {
+      "id": 16,
+      "manufacturer": "BPB",
+      "plugin_name": "Cassette Drums",
+      "link": "https://bedroomproducersblog.com/2016/11/23/drum-machine-vst/"
+    }
+  ],
+  "2025-12-17": [
+    {
+      "id": 17,
+      "manufacturer": "Soundly",
+      "plugin_name": "Soundly Tools",
+      "link": "https://getsoundly.com/tools/"
+    }
+  ],
+  "2025-12-19": [
+    {
+      "id": 10,
+      "manufacturer": "Spitfire Audio",
+      "plugin_name": "BBC Symphony Orchestra Discover",
+      "link": "https://www.spitfireaudio.com/bbc-symphony-orchestra-discover"
+    }
+  ],
+  "2025-12-10": [
+    {
+      "id": 21,
+      "manufacturer": "UVI",
+      "plugin_name": "Noctua by Venus Theory",
+      "link": "https://www.uvi.net/noctua"
+    }
+  ],
+  "2025-12-18": [
+    {
+      "id": 9,
+      "manufacturer": "Vital Audio",
+      "plugin_name": "Vital",
+      "link": "https://vital.audio/"
+    }
+  ],
+  "2025-12-12": [
+    {
+      "id": 5,
+      "manufacturer": "Analog Obsession",
+      "plugin_name": "Predd",
+      "link": "https://www.patreon.com/posts/predd-57672680"
+    }
+  ],
+  "2025-12-15": [
+    {
+      "id": 6,
+      "manufacturer": "Hvoya Audio",
+      "plugin_name": "Ribs",
+      "link": "https://hvoyaaudio.itch.io/ribs"
+    }
+  ],
+  "2025-12-07": [
+    {
+      "id": 4,
+      "manufacturer": "TAL Software",
+      "plugin_name": "TAL-NoiseMaker",
+      "link": "https://tal-software.com/products/tal-noisemaker"
+    }
+  ],
+  "2025-12-01": [
+    {
+      "id": 7,
+      "manufacturer": "Tokyo Dawn Labs",
+      "plugin_name": "Freebies",
+      "link": "https://www.tokyodawn.net/tokyo-dawn-labs/#:~:text=TOKYO%20DAWN%20LABS%20FREEWARE"
+    }
+  ],
+  "2025-12-13": [
+    {
+      "id": 11,
+      "manufacturer": "Michael Norris",
+      "plugin_name": "SoundMagic Spectral",
+      "link": "https://michaelnorris.info/software/soundmagic-spectral"
+    }
+  ],
+  "2025-12-21": [
+    {
+      "id": 22,
+      "manufacturer": "GMH Audio",
+      "plugin_name": "Buzz Cut",
+      "link": "https://plugins4free.com/plugin/2896/"
+    }
+  ],
+  "2025-12-16": [
+    {
+      "id": 24,
+      "manufacturer": "MeldaProduction",
+      "plugin_name": "MFreeFXBundle",
+      "link": "https://www.meldaproduction.com/MFreeFXBundle"
+    }
+  ],
+  "2025-12-05": [
+    {
+      "id": 1,
+      "manufacturer": "GlitchMachines",
+      "plugin_name": "Fracture",
+      "link": "https://glitchmachines.com/products/fracture/"
+    }
+  ],
+  "2025-12-03": [
+    {
+      "id": 3,
+      "manufacturer": "Xfer Records",
+      "plugin_name": "OTT and other Xfer freeware",
+      "link": "https://xferrecords.com/freeware"
+    }
+  ],
+  "2025-12-23": [
+    {
+      "id": 20,
+      "manufacturer": "Andrew Reeman",
+      "plugin_name": "Spectral Suite",
+      "link": "https://www.andrewreeman.com/spectralsuite/"
+    }
+  ],
+  "2025-12-02": [
+    {
+      "id": 19,
+      "manufacturer": "Noise Engineering",
+      "plugin_name": "Freequel Bundle",
+      "link": "https://noiseengineering.us/products/the-freequel-bundle-sinc-vereor-virt-vereor-ruina/"
+    }
+  ],
+  "2025-12-06": [
+    {
+      "id": 14,
+      "manufacturer": "iZotope",
+      "plugin_name": "Ozone Imager",
+      "link": "https://www.izotope.com/en/products/ozone-imager.html"
+    }
+  ],
+  "2025-12-04": [
+    {
+      "id": 12,
+      "manufacturer": "Matt Tytel",
+      "plugin_name": "Helm",
+      "link": "https://tytel.org/helm/"
+    }
+  ],
+  "2025-12-24": [
+    {
+      "id": 18,
+      "manufacturer": "Kilohearts",
+      "plugin_name": "Essentials",
+      "link": "https://kilohearts.com/products/kilohearts_essentials"
+    }
+  ]
 }
