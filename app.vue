@@ -47,7 +47,9 @@
 		</div>
 		<div class="calendar">
 			<div v-for="[k, v] of Object.entries(plugins)" class="calendar-item" :class="{ 'today': getDay(k) === Number(dd), 'past': getDay(k) <= Number(dd) }" @click="showPluginOrNot(getDay(k), v)">
-				<span class="day funky" :style="generateRandom()">{{ getDay(k) }}</span>
+				<div class="day-wrap" :class="{ 'today-circle': getDay(k) === Number(dd) }" :style="generateRandom()">
+					<span class="day funky">{{ getDay(k) }}</span>
+				</div>
 			</div>
 		</div>
 		<div class="plugin" ref="plugin" v-if="pluginOpen">
@@ -293,15 +295,24 @@ h2 {
 }
 
 .day {
-	position: absolute;
+	/* position: absolute; */
 	font-size: 32px;
+	display: flex;
+	justify-content: center;
 }
 
-.today {
+.today-circle {
 	background-image: url(/today.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+.day-wrap {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+}
+
 .today:hover {
 	transform: scale(1.2);
 }
