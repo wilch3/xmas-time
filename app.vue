@@ -87,14 +87,24 @@
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
 
-const today = new Date()
-const dd = String(today.getDate()).padStart(2, '0')
-const mm = String(today.getMonth() + 1).padStart(2, '0')
-const yyyy = today.getFullYear()
-const showPreviousDays = ref(false)
 const audioPlay = ref(false)
 const revealed = ref(false)
 const fakeLoad = ref(true)
+
+const dd = ref('')
+const formatted = ref('')
+const pluginOfTheDay = ref(null)
+
+onMounted(() => {
+	const today = new Date()
+	const d = String(today.getDate()).padStart(2, '0')
+	const m = String(today.getMonth() + 1).padStart(2, '0')
+	const y = today.getFullYear()
+
+	dd.value = d
+	formatted.value = `${y}-${m}-${d}`
+	pluginOfTheDay.value = getPluginOfToday(plugins)
+})
 
 const target = useTemplateRef('plugin')
 onClickOutside(target, event => { if (pluginOpen.value) {pluginOpen.value = false} })
@@ -116,18 +126,18 @@ useHead({
 	title: 'MuTe Xmas Daily Plugins :)',
 })
 
-const formatted = yyyy + '-' + mm + '-' + dd
+// const formatted = yyyy + '-' + mm + '-' + dd
 
 const getPlugins = () => import('~/public/plugins.json').then(m => m.default || m)
 const getPluginOfToday = (data: any) => {
-	if (!data[formatted]) {
+	if (!data[formatted.value]) {
 		return null
 	}
-	return data[formatted][0]
+	return data[formatted.value][0]
 }
 
 const plugins = await getPlugins()
-const pluginOfTheDay = ref()
+// const pluginOfTheDay = ref()
 pluginOfTheDay.value = getPluginOfToday(plugins)
 
 const randomCache: any = {}
@@ -148,9 +158,8 @@ onMounted(() => {
 })
 
 const showPluginOrNot = (day: number, data: any) => {
-	console.log('hello', day, Number(dd), data[0])
-	console.log(today)
-	if (day <= Number(dd)) {
+	console.log('hello', day, Number(dd.value), data[0])
+	if (day <= Number(dd.value)) {
 		pluginOpen.value = !pluginOpen.value
 		pluginData.value = data[0]
 		console.log(pluginData)
@@ -177,7 +186,7 @@ const pause = () => {
 const previousDays: any = ref({})
 
 for (const [k, v] of Object.entries(plugins)) {
-	if (parseInt(k.split('-')[2]) < parseInt(formatted.split('-')[2])) {
+	if (parseInt(k.split('-')[2]) < parseInt(formatted.value.split('-')[2])) {
 		previousDays.value[k] = v[0]
 	}
 }
