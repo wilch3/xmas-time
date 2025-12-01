@@ -348,9 +348,8 @@ h2 {
 
 .plugin {
 	padding: 24px 38px;
-    position: absolute;
+    position: fixed;
     margin: auto;
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
