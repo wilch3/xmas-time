@@ -313,6 +313,7 @@ h2 {
 	width: 100%;
 	max-width: 750px;
     margin: auto;
+	margin-bottom: 60px;
 	/* padding-top: 50px; */
     /* grid-template-rows: minmax(10px, 1fr) 3fr; */
 }
