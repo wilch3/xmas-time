@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<div class="center">
-			<h1 class="funky">MuTe Christmas Plugin Calendar</h1>
+			<h1 class="funky title">Christmas Plugin Calendar</h1>
 			<p style="margin: 40px 0px;">Discover a daily selected (free!) plugin of the MuTe student community to play around with during the holidays!</p>
 		</div>
 		<div class="calendar">
@@ -296,8 +296,14 @@ html {
 	font-size: 12px;
 }
 
+h1.title {
+	font-size: 42px;
+	line-height: 1em;
+	letter-spacing: 10px;
+}
+
 h2 {
-	font-size: 48px;
+	font-size: 42px;
 }
 .calendar {
 	display: grid;
@@ -328,7 +334,7 @@ h2 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 0.5px dashed grey;
+	/* border: 0.5px dashed grey; */
 	padding: 24px 16px;
 	position: relative;
 }
