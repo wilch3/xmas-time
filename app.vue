@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<div class="center">
-			<h1 class="funky">MuTe Students' Christmas Plugin Calendar</h1>
+			<h1 class="funky">MuTe Christmas Plugin Calendar</h1>
 			<p style="margin: 40px 0px;">Discover a daily selected (free!) plugin of the MuTe student community to play around with during the holidays!</p>
 		</div>
 		<div class="calendar">
@@ -80,7 +80,7 @@
 			</div>
 
 		</div>
-		<footer class="credits"> With love, <br/> MuTe 3rd year bachelors; Christmas calendar team <br/> (Armi, Elias N., Jekaterina, Niko, Roosa)<br/> <br/> Code: Jekaterina <br/> Design: Elias & Jekaterina<br/></footer>
+		<footer class="credits"> With love, <br/> MuTe 3rd year bachelors; Christmas calendar team <br/> (Armi, Elias N., Jekaterina, Niko, Roosa)<br/> <br/> Implementation: Jekaterina</footer>
 	</div>
 </template>
 
@@ -177,6 +177,10 @@ for (const [k, v] of Object.entries(plugins)) {
 
 .funky {
 	font-family: "Shizuru", system-ui;
+}
+
+p {
+	font-size: 18px;
 }
 
 html {
@@ -282,6 +286,18 @@ h2 {
     margin: auto;
 	/* padding-top: 50px; */
     /* grid-template-rows: minmax(10px, 1fr) 3fr; */
+}
+
+@media (max-width: 790px) {
+	.calendar {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media (max-width: 400px) {
+	.calendar {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 .calendar-item {
