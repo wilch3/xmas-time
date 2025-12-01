@@ -298,7 +298,7 @@ h2 {
 }
 
 .today {
-	background-image: url(~/today.svg);
+	background-image: url(./today.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
