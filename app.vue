@@ -250,9 +250,16 @@ html {
     font-size: 30px;
 }
 .joululaulu {
-	display: none;
-	/* display: flex; */
+	/* display: none; */
+	display: flex;
     justify-content: end;
+}
+
+@media (min-width: 750px) {
+	.joululaulu {
+		position: absolute;
+		right: 8px;
+	}
 }
 .song {
 	display: flex;
