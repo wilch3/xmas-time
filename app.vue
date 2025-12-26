@@ -53,7 +53,7 @@
 			</div>
 		</div>
 		<div class="plugin" ref="plugin" v-if="pluginOpen">
-			<div v-if="pluginData && pluginData.id === pluginOfTheDay.id">
+			<div v-if="pluginData && pluginOfTheDay && pluginData.id === pluginOfTheDay.id">
 				<div v-if="!revealed">
 					<p>Click on the box for the grand reveal...</p>
 					<p class="bock" @click="revealBocks()">&#x1f381;</p>
@@ -116,17 +116,11 @@ const getDay = (date: String) => {
 	return Number(date.split('-')[2])
 }
 
-// const generateRandom = () => {
-// 	return { top: Math.random() * 40 + 'px', left: Math.random() * 40 + 'px' }
-// }
-
 const noChristmas = ref(false)
 
 useHead({
 	title: 'MuTe Xmas Daily Plugins :)',
 })
-
-// const formatted = yyyy + '-' + mm + '-' + dd
 
 const getPlugins = () => import('~/public/plugins.json').then(m => m.default || m)
 const getPluginOfToday = (data: any) => {
@@ -158,11 +152,9 @@ onMounted(() => {
 })
 
 const showPluginOrNot = (day: number, data: any) => {
-	console.log('hello', day, Number(dd.value), data[0])
 	if (day <= Number(dd.value)) {
 		pluginOpen.value = !pluginOpen.value
 		pluginData.value = data[0]
-		console.log(pluginData)
 	}
 }
 
